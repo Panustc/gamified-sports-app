@@ -792,6 +792,11 @@ html,body{height:100%;width:100%;font-family:-apple-system,BlinkMacSystemFont,'S
     <button id="resetTourBtn" style="width:100%;padding:8px;margin-top:6px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-dim);border-radius:8px;cursor:pointer;font-weight:600;font-size:11px;transition:all 0.3s;">重置新手引导</button>
   </div>
 
+  <div class="godmode-section">
+    <h4>🛠️ 系统维护</h4>
+    <button id="resetSystemBtn" style="width:100%;padding:12px;border:1px solid var(--red);background:rgba(255,71,87,0.1);color:var(--red);border-radius:10px;cursor:pointer;font-weight:700;font-size:13px;transition:all 0.3s;">⚠️ 重置系统数据与引导</button>
+  </div>
+
   <div class="godmode-footer">
     <div class="gf-title"><i class="fab fa-github"></i> 开发者白皮书</div>
     <div class="gf-desc">内含完整的运动数值建模、防作弊逻辑说明及项目源码。</div>
@@ -1625,6 +1630,7 @@ document.getElementById('godmodeCloseBtn').addEventListener('click',function(){d
 document.getElementById('godModeOverlay').addEventListener('click',function(){document.getElementById('godModeDrawer').classList.remove('open');this.classList.remove('show');stopPMTick();});
 document.getElementById('resetDataBtn').addEventListener('click',function(){if(confirm('确定要清除所有本地数据并回到新生报到状态吗？')){localStorage.removeItem('sportsDemoSt');location.reload();}});
 document.getElementById('resetTourBtn').addEventListener('click',function(){localStorage.removeItem('hasSeenTour');toast('✅ 重置成功，下次刷新页面将重新显示引导',2500);});
+document.getElementById('resetSystemBtn').addEventListener('click',function(){if(confirm('确定要清除所有本地记录并重置引导吗？这将恢复至初始状态。')){localStorage.removeItem('hasSeenTour');localStorage.removeItem('sportsDemoSt');toast('🧹 数据已清理，系统将在 1 秒后自动刷新以应用更改。',3000);setTimeout(function(){location.reload();},1000);}});
 document.getElementById('githubLinkBtn').addEventListener('click',function(){confetti(60);setTimeout(function(){window.open('https://github.com/Panustc/gamified-sports-app.git','_blank');},400);});
 
 // Accessibility Mode
